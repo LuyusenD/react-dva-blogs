@@ -10,6 +10,6 @@ const context = require.context('./', false, /\.js$/)
 
 export default context
   .keys()
-  .filter(key => key != './index.js')
+  .filter(key => key !== './index.js')
   .map(key => context(key))
 

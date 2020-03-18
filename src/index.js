@@ -1,11 +1,12 @@
 import dva from 'dva';
 import './index.css';
-import { createBrowserHistory as createHistory } from 'history'
+// import { createBrowserHistory as createHistory } from 'history'
 
 // 声明 dva实例, history 配置去除 /#/
-const app = dva({
-  history: createHistory()
-});
+// dva({
+//   history: createHistory()
+// })
+const app = dva();
 
 // plugins
 // app.use({});
