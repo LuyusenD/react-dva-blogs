@@ -1,4 +1,5 @@
 import fetch from 'dva/fetch';
+import qs from 'qs';
 
 function parseJSON(response) {
   return response.json();
@@ -20,11 +21,41 @@ function checkStatus(response) {
  * @param  {string} url       The URL we want to request
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
+ * 
+ * optons.params 可携带callback参数 请求执行完毕 自调回调函数
  */
-export default function request(url, options) {
-  return fetch(url, options)
+
+function get(url, options) {
+
+  //合并fetch配置参数
+  let option = Object.assign({
+    // headers: {},
+    params: {},
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+  }, options)
+
+  //检查是否有需要执行回调函数
+  const callback = option.params.callback
+  callback ? delete option.params.callback : ''
+
+  //GET请求 params自动转换 GET请求方式 参数传递
+  let path = `${url}${option.params ? '?' + qs.stringify(option.params) : ''}`
+
+  return fetch(path, option)
     .then(checkStatus)
     .then(parseJSON)
+    .then(data => {callback ? callback() : ''; return data})
     .then(data => ({ data }))
     .catch(err => ({ err }));
 }
+
+export default { get }
+
+
+// export default function request(url, options) {
+//   return fetch(url, options)
+//     .then(checkStatus)
+//     .then(parseJSON)
+//     .then(data => ({ data }))
+//     .catch(err => ({ err }));
+// }

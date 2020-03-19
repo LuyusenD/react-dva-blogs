@@ -1,9 +1,8 @@
 // ::-webkit-scrollbar{width: 4px;height:4px;background: transparent;}
 // ::-webkit-scrollbar-thumb{border-radius:2px;background:rgba(156,169,222,1);}
-html, body, #root{ background: #ececec; }
-.blog-max-box{position:relative; height: 100%;
-  &>.blog-content{display:flex; justify-content: space-between;margin: 10px auto;max-width: 1200px; width: 1200px;
-
+.blog-max-box{position:relative; height: 100%;background: #ececec; 
+  &>.blog-content{display:flex; justify-content: space-between;margin: 10px auto 0;max-width: 1200px; width: 1200px;
+    
     &>.content{max-width: 800px;width: 800px;}
     &>.content-sider{max-width: 380px;width: 380px;}
   }

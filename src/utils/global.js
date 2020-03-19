@@ -14,8 +14,8 @@ function keys(any, isLowerCase) {
    * 
    * any: {key: value} or ''
    */
-  if (typeof (any) === 'string') 
-    return isLowerCase ?any.toLowerCase() : any
+  if (typeof (any) === 'string')
+    return isLowerCase ? any.toLowerCase() : any
   return isLowerCase ? Object.keys(any)[0].toLowerCase() : Object.keys(any)[0]
 }
 
@@ -52,7 +52,7 @@ export function mapRouter({ routers = null, options = {} }) {
     <React.Fragment>
       {
         routers.map((el, index) => {
-          return <Route key={index} exact component={el[keys(el)]} path={`${path}${ keys(notChildrenPathName, true) !== keys(el, true) ? '/' + keys(el, true) : '' }`}></Route>
+          return <Route key={index} exact component={el[keys(el)]} path={`${path}${keys(notChildrenPathName, true) !== keys(el, true) ? '/' + keys(el, true) : ''}`}></Route>
         })
       }
     </React.Fragment>
@@ -61,4 +61,4 @@ export function mapRouter({ routers = null, options = {} }) {
   // 抛出渲染后的组件
   return block
 
-} 
+}

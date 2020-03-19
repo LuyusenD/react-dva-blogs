@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { withRouter } from 'react-dom'
 import { Link } from 'dva/router'
 import { connect } from 'dva'
 import { Avatar } from 'antd';
@@ -6,7 +7,7 @@ import { getBloggerInfo } from '@/actions'
 import './style.scss'
 
 const Header = (props) => {
-
+  console.log(props);
   const { bloggerInfo, dispatch } = props
 
   const [navList] = useState([
@@ -17,9 +18,10 @@ const Header = (props) => {
   ])
 
   useEffect(() => {
+    //网络请求 博主信息 Mock
     dispatch(getBloggerInfo())
   }, [])
-  console.log(props)
+
   return (
     <div className="header">
       <div className="header-cont">
@@ -36,6 +38,7 @@ const Header = (props) => {
         <div className="nav">
           <ul>
             {
+              // style={{ backgroundColor: item.path === props.history.location.pathname ? '#404040' : '' }}
               navList.map((item, index) => <li key={index}><Link to={item.path} >{item.name}</Link></li>)
             }
           </ul>

@@ -1,7 +1,7 @@
 
 html, body, :global(#root) {
   margin: 0px;
-  height: 100%;
+  height: auto !important;
   
 }
 

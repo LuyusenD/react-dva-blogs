@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'dva/router'
 // import { Row, Col } from 'antd'
 
-// import styles from './style.scss'
+import './style.scss'
 
 const Home = () => {
   const [count] = useState(0)
