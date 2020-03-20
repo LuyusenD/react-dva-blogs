@@ -16,7 +16,7 @@
     &>.nav{position: relative;margin: 0 auto;width: 1200px;height: 100%;
       &>ul{height: 100%;
         &>li{float: left;padding: 0 12px;height:100%;line-height: 46px;cursor:pointer;list-style: none;transition: .3s;
-          a{color: #eee;}
+          span{color: #eee;}
           &:hover{background:#404040;}
         }
       }

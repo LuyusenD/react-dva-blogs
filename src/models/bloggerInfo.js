@@ -1,16 +1,26 @@
 import * as api from '../services'
 
+const localBloggerInfo = localStorage.bloggerInfo ? JSON.parse(localStorage.bloggerInfo) : false
+console.log(localBloggerInfo)
+
+let initiarValue = {
+  imgUrl: null,
+  name: null,
+  autograph: null
+}
+
+if (localBloggerInfo) {
+  let { imgUrl, name, autograph } = localBloggerInfo
+  initiarValue = {imgUrl, name, autograph}
+}
+
 export default {
   namespace: 'bloggerInfo',
 
-  state: {
-    imgUrl: null,
-    name: null,
-    autograph: null
-  },
+  state: initiarValue,
 
   effects: {
-    *getBloggerInfoAsync( state , { call, put }) {
+    *getBloggerInfoAsync(state, { call, put }) {
       const response = yield call(api.getBloggerInfo);
       localStorage.bloggerInfo = JSON.stringify(response.data)
       yield put({
@@ -21,7 +31,7 @@ export default {
   },
 
   reducers: {
-    save (state, actions) {
+    save(state, actions) {
       return actions.data
     }
   }

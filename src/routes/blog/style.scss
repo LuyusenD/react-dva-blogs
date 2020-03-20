@@ -1,9 +1,26 @@
 // ::-webkit-scrollbar{width: 4px;height:4px;background: transparent;}
 // ::-webkit-scrollbar-thumb{border-radius:2px;background:rgba(156,169,222,1);}
 .blog-max-box{position:relative; height: 100%;background: #ececec; 
+  .ant-card{border-radius: 5px;}
+
   &>.blog-content{display:flex; justify-content: space-between;margin: 10px auto 0;max-width: 1200px; width: 1200px;
     
     &>.content{max-width: 800px;width: 800px;}
     &>.content-sider{max-width: 380px;width: 380px;}
+  }
+
+  .blog-seart-color{position:fixed;width: 31px;height: 31px;bottom: 100px;right: 14px;
+    &:hover{
+      width: 312px;height:96px;bottom:35px;
+      &>.seart-color-item{display:inline-block;}
+    }
+    &>.seart-color-box{float:right;padding: 3px;border-radius: 10%;box-shadow:rgba(0, 0, 0, 0.25) 0px 1px 4px;background:#fff;cursor:pointer;
+      &>.color-block{width: 25px; height: 25px;border-radius: 5%;
+        background: conic-gradient(#9ED110, #50B517, #179067, #476EAF, #9f49ac, #CC42A2, #FF3BA7, #FF5800, #FF8100, #FEAC00, #FFCC00, #EDE604);
+      }
+    }
+    &>.seart-color-item{position:absolute!important;display: none;top: 0;right: 35px;
+      
+    }
   }
 }

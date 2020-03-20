@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'dva/router'
 
-function keys(any, isLowerCase) {
+export function keys(any, isLowerCase) {
   /**
    * 用于遍历路由 简洁方法
    * 传入对象 返回key值 可提供转换小写

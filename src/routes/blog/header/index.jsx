@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter } from 'react-dom'
-import { Link } from 'dva/router'
 import { connect } from 'dva'
 import { Avatar } from 'antd';
 import { getBloggerInfo } from '@/actions'
 import './style.scss'
 
 const Header = (props) => {
-  console.log(props);
-  const { bloggerInfo, dispatch } = props
+  const { bloggerInfo, globalState, dispatch } = props
 
   const [navList] = useState([
     { name: '首页', path: '/blog' },
@@ -19,14 +16,19 @@ const Header = (props) => {
 
   useEffect(() => {
     //网络请求 博主信息 Mock
-    dispatch(getBloggerInfo())
+    if (!localStorage.bloggerInfo)
+      dispatch(getBloggerInfo())
   }, [])
+
+  const to = (path) => {
+    props.history.push(path)
+  }
 
   return (
     <div className="header">
       <div className="header-cont">
         <img className="bgimg" src="/public/images/blog-bg.jpg" alt="backimage" />
-        <div className="bgcolor" style={{ backgroundColor: '#299982' }}></div>
+        <div className="bgcolor" style={{ backgroundColor: globalState.mainColor }}></div>
         <div className="content">
           <Avatar size={150} className="content-image" src={bloggerInfo.imgUrl} />
           <p className="content-name">{bloggerInfo.name}</p>
@@ -38,8 +40,8 @@ const Header = (props) => {
         <div className="nav">
           <ul>
             {
-              // style={{ backgroundColor: item.path === props.history.location.pathname ? '#404040' : '' }}
-              navList.map((item, index) => <li key={index}><Link to={item.path} >{item.name}</Link></li>)
+              // 
+              navList.map((item, index) => <li key={index} style={{ backgroundColor: item.path === props.pathname ? '#404040' : '' }} onClick={() => { to(item.path) }}><span>{item.name}</span></li>)
             }
           </ul>
         </div>
@@ -50,7 +52,8 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    bloggerInfo: state.bloggerInfo
+    bloggerInfo: state.bloggerInfo,
+    globalState:state.globalState
   }
 }
 

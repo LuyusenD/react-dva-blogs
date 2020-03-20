@@ -1,5 +1,9 @@
 import dva from 'dva';
 import './index.css';
+
+// 引入React继承的方法
+import './utils/reactExtend.js'
+
 // import { createBrowserHistory as createHistory } from 'history'
 
 // 声明 dva实例, history 配置去除 /#/

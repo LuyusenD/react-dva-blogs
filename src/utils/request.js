@@ -35,8 +35,9 @@ function get(url, options) {
   }, options)
 
   //检查是否有需要执行回调函数
-  const callback = option.params.callback
-  callback ? delete option.params.callback : ''
+  const callback = option.params.callback || function () {}
+  if (callback) 
+    delete option.params.callback
 
   //GET请求 params自动转换 GET请求方式 参数传递
   let path = `${url}${option.params ? '?' + qs.stringify(option.params) : ''}`
@@ -44,7 +45,7 @@ function get(url, options) {
   return fetch(path, option)
     .then(checkStatus)
     .then(parseJSON)
-    .then(data => {callback ? callback() : ''; return data})
+    .then(data => {callback(); return data})
     .then(data => ({ data }))
     .catch(err => ({ err }));
 }
