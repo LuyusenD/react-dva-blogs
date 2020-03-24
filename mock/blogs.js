@@ -18,5 +18,20 @@ module.exports = {
         }
       ]
     }))
+  },
+
+  "GET /api/newBlogs": (req,res) => {
+    res.json(Mock.mock({
+      ["blogs|10"]: [
+        { 
+          "id|+1": 1, 
+          "title": () => Mock.mock('@csentence'),
+          "context": () => Mock.mock('@cparagraph(10,20)'),
+          "author": () => Mock.mock('@first'),
+          "browse|1-9999": 0,
+          "time" : () => `${Mock.mock('@date')} ${Mock.mock('@time')}`
+        }
+      ]
+    }))
   }
 }

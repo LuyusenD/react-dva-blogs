@@ -9,9 +9,9 @@
     &>.content-sider{max-width: 380px;width: 380px;}
   }
 
-  .blog-seart-color{position:fixed;width: 31px;height: 31px;bottom: 100px;right: 14px;
+  .blog-seart-color{position:fixed;width: 31px;height: 31px;bottom: 80px;right: 14px;
     &:hover{
-      width: 312px;height:96px;bottom:35px;
+      width: 312px;height:96px;bottom:15px;
       &>.seart-color-item{display:inline-block;}
     }
     &>.seart-color-box{float:right;padding: 3px;border-radius: 10%;box-shadow:rgba(0, 0, 0, 0.25) 0px 1px 4px;background:#fff;cursor:pointer;
@@ -22,5 +22,8 @@
     &>.seart-color-item{position:absolute!important;display: none;top: 0;right: 35px;
       
     }
+  }
+  .recall-top{position:fixed;width: 31px;height: 31px;bottom: 35px;right: 14px;border-radius: 5px;background:#fff;box-shadow:rgba(0, 0, 0, 0.25) 0px 1px 4px;cursor: pointer;
+    .point-up{width: 100%;height: 100px;}
   }
 }

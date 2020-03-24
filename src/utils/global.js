@@ -62,3 +62,15 @@ export function mapRouter({ routers = null, options = {} }) {
   return block
 
 }
+
+export function reCallTopFun () {
+  document.documentElement.scrollTop = 0
+  // let time = setInterval(() => {
+  //   document.documentElement.scrollTop -= 30
+  //   if (document.documentElement.scrollTop <= 0) {
+  //     clearInterval(time)
+  //     time = null
+  //   }
+  // }, 1)
+  
+}

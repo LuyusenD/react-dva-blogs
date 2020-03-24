@@ -24,16 +24,20 @@ function checkStatus(response) {
  * 
  * optons.params 可携带callback参数 请求执行完毕 自调回调函数
  */
-
-function get(url, options) {
-
+let initiOptions = {
+  params: {}
+}
+function get(url, options = initiOptions) {
+  //判断options params 是否 undefined
+  if (options.params === undefined)
+    throw new Error(` API '${url}' , Params not is Undefined; Should params: {} or params: {key: value}`)
   //合并fetch配置参数
   let option = Object.assign({
     // headers: {},
     params: {},
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
   }, options)
-
+  
   //检查是否有需要执行回调函数
   const callback = option.params.callback || function () {}
   if (callback) 
